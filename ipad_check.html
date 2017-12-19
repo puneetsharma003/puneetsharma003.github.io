@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>iPad Launch</title>
+		<script>
+			function delete_cookie(name) 
+			{
+				document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			}
+			
+			function getCookie(cname) 
+			{
+				var name = cname + "=";
+				var ca = document.cookie.split(';');
+				for(var i = 0; i < ca.length; i++) 
+				{
+					var c = ca[i];
+					while (c.charAt(0) == ' ') {
+						c = c.substring(1);
+					}
+					if (c.indexOf(name) == 0) 
+					{
+						var val = c.substring(name.length, c.length);
+						delete_cookie(cname)
+						return val; 
+					}
+				}
+				return "";
+			}
+			
+			function check_ipad_launch() {
+				var launch_params = getCookie('decipher_ipad_launch_params')
+				var app_url = "puneetsharma030.github.io/ipad_launch?" + launch_params
+				console.log(app_url)
+				window.location.href = app_url	
+			}
+			
+			//call the function
+			check_ipad_launch()
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
