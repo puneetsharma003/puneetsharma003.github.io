@@ -13,6 +13,7 @@
 			{
 				var name = cname + "=";
 				var ca = document.cookie.split(';');
+				console.log(ca.length)
 				for(var i = 0; i < ca.length; i++) 
 				{
 					var c = ca[i];
@@ -22,7 +23,7 @@
 					if (c.indexOf(name) == 0) 
 					{
 						var val = c.substring(name.length, c.length);
-						delete_cookie(cname)
+						//delete_cookie(cname)
 						return val; 
 					}
 				}
