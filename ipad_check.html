@@ -1,46 +1,30 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>iPad Launch</title>
-		<script>
-			function delete_cookie(name) 
-			{
-				document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			}
-			
-			function getCookie(cname) 
-			{
-				var name = cname + "=";
-				var ca = document.cookie.split(';');
-				for(var i = 0; i < ca.length; i++) 
-				{
-					var c = ca[i];
-					while (c.charAt(0) == ' ') {
-						c = c.substring(1);
-					}
-					if (c.indexOf(name) == 0) 
-					{
-						var val = c.substring(name.length, c.length);
-						delete_cookie(cname)
-						return val; 
-					}
-				}
-				return "";
-			}
-			
-			function check_ipad_launch() {
-				var launch_params = getCookie("decipher_ipad_launch_params")
-				var app_url = "https://puneetsharma030.github.io/ipad_launch?" + launch_params
-				console.log(app_url)
-				window.location.href = app_url	
-			}
-			
-			//call the function
-			check_ipad_launch()
-		</script>
-	</head>
-	<body>
-		Decipher iPad App
-	</body>
+    <head>
+        <meta charset="utf-8">
+            <title>Landing Page</title>
+            <meta name="apple-itunes-app" content="app-id=1313445778">
+                <script>
+                    function setCookie(cname, cvalue, exdays) {
+                        var d = new Date();
+                        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                        var expires = "expires="+d.toUTCString();
+                        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                    }
+                
+                function launch_app()
+                {
+                    var urlParams = new URLSearchParams(window.location.search);
+                    setCookie("decipher_ipad_launch_params", urlParams.toString(), 1)
+                    //var app_url = "https://puneetsharma030.github.io/ipad_launch?" + urlParams.toString()
+                    var app_url = "https://ipad-decipher.emotionadvisor.com/ipad_launch?ipad_check=1&" + urlParams.toString()
+                    console.log(app_url)
+                    //window.location.href = app_url
+                    window.location.replace(app_url)
+                }
+                </script>
+                </head>
+    <body>
+        <button type="button" onclick="launch_app()">Start Decipher Experience</button>
+    </body>
 </html>
